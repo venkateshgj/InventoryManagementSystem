@@ -1,4 +1,4 @@
-package com.inventorymanagement.category;
+package com.inventorymanagement.categories;
 
 import java.util.Optional;
 
@@ -17,6 +17,11 @@ public class CategoryController {
 	
 	@Autowired
 	CategoryService service;
+	
+	@GetMapping("/")
+	String helllo() {
+		return "Hello";
+	}
 
 	@GetMapping("/all")
 	Iterable<Category> getAllCategories() {
