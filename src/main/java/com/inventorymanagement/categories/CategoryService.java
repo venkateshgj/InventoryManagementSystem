@@ -1,4 +1,4 @@
-package com.inventorymanagement.category;
+package com.inventorymanagement.categories;
 
 import java.util.Optional;
 

@@ -1,4 +1,4 @@
-package com.inventorymanagement.category;
+package com.inventorymanagement.categories;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -19,4 +19,8 @@ public class Category {
 	private Long categoryId;
 	
 	private String categoryName;
+	
+	public Category(Long categoryId) {
+		this.categoryId=categoryId;
+	}
 }

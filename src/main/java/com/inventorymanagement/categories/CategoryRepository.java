@@ -1,4 +1,4 @@
-package com.inventorymanagement.category;
+package com.inventorymanagement.categories;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
