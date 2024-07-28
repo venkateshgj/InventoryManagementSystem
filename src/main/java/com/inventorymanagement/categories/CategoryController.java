@@ -17,11 +17,6 @@ public class CategoryController {
 	
 	@Autowired
 	CategoryService service;
-	
-	@GetMapping("/")
-	String helllo() {
-		return "Hello";
-	}
 
 	@GetMapping("/all")
 	Iterable<Category> getAllCategories() {
