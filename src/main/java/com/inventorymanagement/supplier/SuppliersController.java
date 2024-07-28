@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inventorymanagement.categories.Category;
 import com.inventorymanagement.products.Product;
 
 @RestController
@@ -46,4 +47,26 @@ public class SuppliersController {
     void deleteASupplier(@PathVariable Long id){
         service.deleteASupplier(id);
     }
+
+	@GetMapping("/all/category/{categoryId}")
+	List<Suppliers> getAllSuppliersBycategoryId(@PathVariable Long categoryId) {
+		return service.getAllSuppliersBycategoryId(categoryId);
+	}
+
+	@PostMapping("/all/{categoryId}")
+	void addSupplier(@RequestBody Suppliers supplier, @PathVariable Long categoryId) {
+		supplier.setCategory(new Category(categoryId));
+		service.addSupplier(supplier);
+	}
+
+	@PutMapping("/all/{supplierId}/{categoryId}")
+	void updateSupplier(@RequestBody Suppliers supplier, @PathVariable Long categoryId) {
+		supplier.setCategory(new Category(categoryId));
+		service.updateSupplier(supplier);
+	}
+	
+	@DeleteMapping("/all/category/{categoryId}")
+	void deleteAllSuppliersByCategoryId(@PathVariable Long categoryId) {
+		service.deleteAllSuppliersByCategoryId(categoryId);
+	}
 }

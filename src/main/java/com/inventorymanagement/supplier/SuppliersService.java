@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.inventorymanagement.products.Product;
 
@@ -32,5 +33,14 @@ public class SuppliersService {
 	
 	void deleteASupplier(Long id) {
 		repo.deleteById(id);
+	}
+	
+	List<Suppliers> getAllSuppliersBycategoryId(Long categoryId) {
+		return repo.findByCategoryCategoryId(categoryId);
+	}
+	
+	@Transactional
+	void deleteAllSuppliersByCategoryId(Long categoryId) {
+		repo.deleteAllSuppliersByCategoryId(categoryId);
 	}
 }
