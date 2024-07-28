@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.inventorymanagement.categories.Category;
 
@@ -22,9 +23,9 @@ public class ProductService {
 		return repo.findById(id);
 	}
 
-//	List<Category> getProductsBycategoryId(Long categoryId) {
-//		return repo.getByCategoryId(categoryId);
-//	}
+	List<Product> getAllProductsBycategoryId(Long categoryId) {
+		return repo.findByCategoryCategoryId(categoryId);
+	}
 	
 	void addNewProduct(Product product) {
 		repo.save(product);		
@@ -34,8 +35,13 @@ public class ProductService {
 		repo.save(product);
 	}
 
-	void deleteAProduct(Long id) {
+	void deleteAProductById(Long id) {
 		repo.deleteById(id);
+	}
+	
+	@Transactional
+	void deleteAllProductsByCategoryId(Long categoryId) {
+		repo.deleteAllProductsByCategoryId(categoryId);
 	}
 
 }

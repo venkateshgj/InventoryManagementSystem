@@ -20,13 +20,13 @@ public class Product {
 	private Long productId;
 	private String productName;
 	private String description;
-	private double unitPrice;
-	private int unitsInStocks;
+	private Double unitPrice;
+	private Integer unitsInStocks;
 	
 	@ManyToOne
 	private Category category;
 
-	public Product(Long productId, String productName, String description, double unitPrice, int unitsInStocks,
+	public Product(Long productId, String productName, String description, Double unitPrice, Integer unitsInStocks,
 			Long categoryId) {
 		this.productId = productId;
 		this.productName = productName;
