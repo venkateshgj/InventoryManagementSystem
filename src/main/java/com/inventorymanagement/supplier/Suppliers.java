@@ -1,6 +1,6 @@
 package com.inventorymanagement.supplier;
 
-import com.inventorymanagement.category.Category;
+import com.inventorymanagement.categories.Category;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -13,7 +13,7 @@ import lombok.NoArgsConstructor;
 
 @Entity
 @Data
-@AllArgsConstructor
+//@AllArgsConstructor
 @NoArgsConstructor
 public class Suppliers {
 	
@@ -24,7 +24,7 @@ public class Suppliers {
 	private String supplierName;
 	
 	@ManyToOne
-	private Category category;
+	Category category;
 	
 	private String phone;
 
@@ -32,7 +32,7 @@ public class Suppliers {
 		super();
 		this.supplierId = supplierId;
 		this.supplierName = supplierName;
-		this.category = new Category(categoryId,"");
+		this.category = new Category(categoryId);
 		this.phone = phone;
 	}
 
