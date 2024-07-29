@@ -35,5 +35,9 @@ public class Product {
 		this.unitsInStocks = unitsInStocks;
 		this.category = new Category(categoryId);
 	}
+
+	public Product(Long productId) {
+		this.productId=productId;
+	}
 	
 }
