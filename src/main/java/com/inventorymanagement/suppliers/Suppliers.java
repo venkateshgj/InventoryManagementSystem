@@ -36,4 +36,9 @@ public class Suppliers {
 		this.phone = phone;
 	}
 
+	public Suppliers(long supplierId) {
+		// TODO Auto-generated constructor stub
+		this.supplierId =supplierId;
+	}
+
 }
