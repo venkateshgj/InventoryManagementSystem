@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inventorymanagement.products.Product;
 import com.inventorymanagement.products.ProductService;
-import com.inventorymanagement.supplier.Suppliers;
+import com.inventorymanagement.suppliers.Suppliers;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

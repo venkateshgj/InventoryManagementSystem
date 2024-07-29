@@ -1,4 +1,4 @@
-package com.inventorymanagement.supplier;
+package com.inventorymanagement.suppliers;
 
 import java.util.List;
 import java.util.Optional;
