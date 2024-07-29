@@ -36,7 +36,13 @@ public class Product {
 		this.category = new Category(categoryId);
 	}
 
+	public void setCategory(Category category2) {
+		// TODO Auto-generated method 
+		this.category = category2;
+	}
+
 	public Product(Long productId) {
+		// TODO Auto-generated constructor stub
 		this.productId=productId;
 	}
 	
