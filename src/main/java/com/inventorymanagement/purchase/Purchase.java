@@ -3,7 +3,7 @@ package com.inventorymanagement.purchase;
 import java.sql.Timestamp;
 
 import com.inventorymanagement.products.Product;
-import com.inventorymanagement.supplier.Suppliers;
+import com.inventorymanagement.suppliers.Suppliers;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
