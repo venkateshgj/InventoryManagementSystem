@@ -1,4 +1,4 @@
-package com.inventorymanagement.supplier;
+package com.inventorymanagement.suppliers;
 
 import com.inventorymanagement.categories.Category;
 
