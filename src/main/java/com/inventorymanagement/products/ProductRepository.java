@@ -7,6 +7,8 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import com.inventorymanagement.warehouses.Warehouses;
+
 
 
 @Repository
@@ -18,5 +20,7 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 	@Transactional
 	@Query("delete from Product p where p.category.id = :categoryId")
 	void deleteAllProductsByCategoryId(Long categoryId);
+
+	List<Product> findByWarehouseWarehouseId(Long warehouseId);
 
 }
