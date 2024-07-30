@@ -1,4 +1,4 @@
-package com.inventorymanagement.supplier;
+package com.inventorymanagement.suppliers;
 
 import java.util.List;
 import java.util.Optional;
@@ -53,7 +53,7 @@ public class SuppliersController {
 		return service.getAllSuppliersBycategoryId(categoryId);
 	}
 
-	@PostMapping("/all/{categoryId}")
+	@PostMapping("/all/add/{categoryId}")
 	void addSupplier(@RequestBody Suppliers supplier, @PathVariable Long categoryId) {
 		supplier.setCategory(new Category(categoryId));
 		service.addSupplier(supplier);

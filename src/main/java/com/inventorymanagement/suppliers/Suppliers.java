@@ -1,4 +1,4 @@
-package com.inventorymanagement.supplier;
+package com.inventorymanagement.suppliers;
 
 import com.inventorymanagement.categories.Category;
 
@@ -24,7 +24,7 @@ public class Suppliers {
 	private String supplierName;
 	
 	@ManyToOne
-	Category category;
+	private Category category;
 	
 	private String phone;
 
