@@ -43,9 +43,10 @@ public class SalesOrderController {
 		service.addNewSalesOrder(salesOrder);
 	}
 
-	@PutMapping("/all/{salesOrderId}/{productId}")
-	void updateSalesOrder(@RequestBody SalesOrder salesOrder, @PathVariable Long productId) {
+	@PutMapping("/all/update/{productId}/{salesId}")
+	void updateSalesOrder(@RequestBody SalesOrder salesOrder, @PathVariable Long productId, @PathVariable Long salesId) {
 		salesOrder.setProduct(new Product(productId));
+		salesOrder.setSalesOrderId(salesId);
 		service.updateSalesOrder(salesOrder);
 	}
 
