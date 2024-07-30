@@ -13,7 +13,7 @@ public class PurchaseService {
 	PurchaseRepository repo;
 	
 	List<Purchase> getAllPurchase(){
-		return (List)(repo.findAll());
+		return (List<Purchase>)(repo.findAll());
 	}
 	
 	List<Purchase> getByProductIdByPurchaseId(long productId){
