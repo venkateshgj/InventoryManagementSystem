@@ -1,6 +1,7 @@
 package com.inventorymanagement.products;
 
 import com.inventorymanagement.categories.Category;
+import com.inventorymanagement.warehouses.Warehouses;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -24,15 +25,19 @@ public class Product {
 	private Integer unitsInStocks;
 	
 	@ManyToOne
+	private Warehouses warehouse;
+	
+	@ManyToOne
 	private Category category;
 
 	public Product(Long productId, String productName, String description, Double unitPrice, Integer unitsInStocks,
-			Long categoryId) {
+			Long warehouseId, Long categoryId) {
 		this.productId = productId;
 		this.productName = productName;
 		this.description = description;
 		this.unitPrice = unitPrice;
 		this.unitsInStocks = unitsInStocks;
+		this.warehouse = new Warehouses(warehouseId);
 		this.category = new Category(categoryId);
 	}
 

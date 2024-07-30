@@ -27,6 +27,10 @@ public class ProductService {
 		return repo.findByCategoryCategoryId(categoryId);
 	}
 	
+	List<Product> getAllProductsByWarehouseId(Long warehouseId) {
+		return repo.findByWarehouseWarehouseId(warehouseId);
+	}
+	
 	void addNewProduct(Product product) {
 		repo.save(product);		
 	}

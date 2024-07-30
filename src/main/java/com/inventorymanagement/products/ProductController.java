@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +16,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.inventorymanagement.categories.Category;
+import com.inventorymanagement.warehouses.Warehouses;
+
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3000")
+//@CrossOrigin(origins = "http://127.0.0.1:5500/")
 @RequestMapping("/api/v1.0/products")
 public class ProductController {
 
@@ -38,10 +41,16 @@ public class ProductController {
 	List<Product> getAllProductsBycategoryId(@PathVariable Long categoryId) {
 		return service.getAllProductsBycategoryId(categoryId);
 	}
+	
+	@GetMapping("/all/warehouse/{warehouseId}")
+	List<Product> getAllProductsByWarehouseId(@PathVariable Long warehouseId) {
+		return service.getAllProductsByWarehouseId(warehouseId);
+	}
 
-	@PostMapping("/all/{categoryId}")
-	void addNewProduct(@RequestBody Product product, @PathVariable Long categoryId) {
+	@PostMapping("/all/{categoryId}/{warehouseId}")
+	void addNewProduct(@RequestBody Product product, @PathVariable Long categoryId, @PathVariable Long warehouseId) {
 		product.setCategory(new Category(categoryId));
+		product.setWarehouse(new Warehouses(warehouseId));
 		service.addNewProduct(product);
 	}
 
@@ -50,7 +59,15 @@ public class ProductController {
 		product.setCategory(new Category(categoryId));
 		service.updateProduct(product);
 	}
-
+	
+	@PutMapping("/all/update/units/{productId}/{units}")
+	void updateProductUnitStock(@PathVariable Long productId, @PathVariable Integer units) {
+		Optional<Product> productOptional = service.getProductById(productId);
+		Product product = productOptional.get();
+		product.setUnitsInStocks(units);
+		service.updateProduct(product);
+	}
+	
 	@DeleteMapping("/all/{id}")
 	void deleteAProductById(@PathVariable Long id) {
 		service.deleteAProductById(id);

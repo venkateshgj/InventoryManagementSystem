@@ -24,7 +24,7 @@ public class Suppliers {
 	private String supplierName;
 	
 	@ManyToOne
-	Category category;
+	private Category category;
 	
 	private String phone;
 
