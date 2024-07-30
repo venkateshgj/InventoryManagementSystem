@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.inventorymanagement.suppliers.Suppliers;
+
 @RestController
 @RequestMapping("/api/v1.0/categories")
 public class CategoryController {
@@ -65,9 +67,4 @@ public class CategoryController {
 
 
 
-//public ResponseEntity<Category> createOrUpdateCategory(@RequestBody CategoryRequest request) {
-//    Category category = new Category();
-//    category.setCategoryName(request.getName());
-//    category.setProducts(request.getProducts());
-//    Category savedCategory = categoryService.saveCategory(category);
-//    return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
+/
