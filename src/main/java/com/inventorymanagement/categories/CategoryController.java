@@ -12,8 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.inventorymanagement.suppliers.Suppliers;
-
 @RestController
 @RequestMapping("/api/v1.0/categories")
 public class CategoryController {
@@ -31,13 +29,45 @@ public class CategoryController {
 		return service.getCategoryById(id);
 	}
 	
+	@PostMapping("/all/prducts")
+	void addNewCategoryWithProdects(@RequestBody CategoryRequest categoryRequest) {
+		Category category = new Category();
+		category.setCategoryName(categoryRequest.getName());
+		category.setProducts(categoryRequest.getProducts());
+		service.addNewCategory(category);
+	}
 	@PostMapping("/all")
 	void addNewCategory(@RequestBody Category category) {
 		service.addNewCategory(category);
 	}
+	
+	@PutMapping("/all/products/{categoryId}")
+	void updateCategory(@RequestBody CategoryRequest categoryRequest,@PathVariable Long categoryId) {
+		Category category = new Category();
+		category.setCategoryId(categoryId);
+		category.setCategoryName(categoryRequest.getName());
+		category.setProducts(categoryRequest.getProducts());
+		service.updateCategory(category);
+	}
+	@PutMapping("/all/{categoryId}")
+	void updateCategory(@RequestBody Category category,@PathVariable Long categoryId) {
+		category.setCategoryId(categoryId);
+		service.addNewCategory(category);
+	}
+	
 		
 	@DeleteMapping("/all/{id}")
 	void deleteACategoryById(@PathVariable Long id) {
 		service.deleteACategoryById(id);
 	}
 }
+
+
+
+
+//public ResponseEntity<Category> createOrUpdateCategory(@RequestBody CategoryRequest request) {
+//    Category category = new Category();
+//    category.setCategoryName(request.getName());
+//    category.setProducts(request.getProducts());
+//    Category savedCategory = categoryService.saveCategory(category);
+//    return new ResponseEntity<>(savedCategory, HttpStatus.CREATED);
