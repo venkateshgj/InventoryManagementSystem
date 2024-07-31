@@ -19,9 +19,7 @@ import com.inventorymanagement.warehouses.Warehouses;
 
 
 @RestController
-
 @CrossOrigin(origins = "http://localhost:3000")
-
 @RequestMapping("/api/v1.0/products")
 public class ProductController {
 

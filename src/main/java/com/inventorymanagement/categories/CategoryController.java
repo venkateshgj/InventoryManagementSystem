@@ -42,7 +42,6 @@ public class CategoryController {
 	void addNewCategory(@RequestBody Category category) {
 		service.addNewCategory(category);
 	}
-	
 	@PutMapping("/all/products/{categoryId}")
 	void updateCategory(@RequestBody CategoryRequest categoryRequest,@PathVariable Long categoryId) {
 		Category category = new Category();
@@ -56,7 +55,7 @@ public class CategoryController {
 		category.setCategoryId(categoryId);
 		service.addNewCategory(category);
 	}
-	
+
 		
 	@DeleteMapping("/all/{id}")
 	void deleteACategoryById(@PathVariable Long id) {
@@ -64,7 +63,3 @@ public class CategoryController {
 	}
 }
 
-
-
-
-/
