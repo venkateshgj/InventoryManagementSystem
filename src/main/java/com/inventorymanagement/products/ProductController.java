@@ -19,7 +19,7 @@ import com.inventorymanagement.warehouses.Warehouses;
 
 
 @RestController
-//@CrossOrigin(origins = "http://127.0.0.1:5500/")
+@CrossOrigin("http://localhost:3000")
 @RequestMapping("/api/v1.0/products")
 public class ProductController {
 
@@ -52,10 +52,17 @@ public class ProductController {
 		product.setWarehouse(new Warehouses(warehouseId));
 		service.addNewProduct(product);
 	}
-
+	
+	
 	@PutMapping("/all/{productId}/{categoryId}")
 	void updateProduct(@RequestBody Product product, @PathVariable Long categoryId) {
 		product.setCategory(new Category(categoryId));
+		service.updateProduct(product);
+	}
+	
+	@PutMapping("/all/update/product/{productId}")
+	void updateProduct(@RequestBody Product product) {
+//		product.setCategory(new Category(categoryId));
 		service.updateProduct(product);
 	}
 	
