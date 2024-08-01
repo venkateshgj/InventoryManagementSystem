@@ -1,9 +1,11 @@
 package com.inventorymanagement.warehouses;
 
 import org.springframework.data.repository.CrudRepository;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Repository;
 
-public interface WarehousesRepository extends CrudRepository<Warehouses, Long>{
-	
-	
+@Repository
+public interface WarehousesRepository extends CrudRepository<Warehouses, Long> {
+    Warehouses findByWarehouseIdAndUserNameAndPassword(Long warehouseId, String userName, String password);
+
+	Warehouses findByUserNameAndPassword(String userName, String password);
 }
