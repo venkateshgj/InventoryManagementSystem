@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.inventorymanagement.products.Product;
 import com.inventorymanagement.products.ProductService;
+import com.inventorymanagement.salesOrders.SalesOrder;
 import com.inventorymanagement.suppliers.Suppliers;
 
 import org.springframework.web.bind.annotation.PostMapping;
@@ -38,6 +39,12 @@ public class PurchaseController {
 	List<Purchase> getByProductIdByPurchaseId(@PathVariable Long purchaseId) {
 		return service.getByProductIdByPurchaseId(purchaseId);
 	}
+	
+	@GetMapping("/all/purchases/{warehouseId}")
+	List<Purchase> getAllPurchaseByWarehouseId(@PathVariable Long warehouseId) {
+		return service.getAllPurchaseByWarehouseId(warehouseId);
+	}
+	
 	@PostMapping("/new/{supplierId}/{productId}")
 	public void newPurchase(@RequestBody Purchase purchase, @PathVariable Long supplierId, @PathVariable Long productId ) {
 		purchase.setSuppliers(new Suppliers(supplierId));

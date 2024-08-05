@@ -26,6 +26,9 @@ public class SalesOrderService {
 	List<SalesOrder> getAllSalesOrdersByProductId(Long productId) {
 		return repo.findByProductProductId(productId);
 	}
+	List<SalesOrder> getAllSalesOrdersByWarehouseId(Long warehouseId) {
+		return repo.getAllSalesOrdersByWarehouseId(warehouseId);
+	}
 
 	void addNewSalesOrder(SalesOrder salesOrder) {
 		repo.save(salesOrder);
