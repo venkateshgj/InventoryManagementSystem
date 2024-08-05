@@ -2,9 +2,12 @@ package com.inventorymanagement.purchase;
 
 import java.sql.Timestamp;
 
+import org.hibernate.annotations.CreationTimestamp;
+
 import com.inventorymanagement.products.Product;
 import com.inventorymanagement.suppliers.Suppliers;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -27,6 +30,8 @@ public class Purchase {
 	
 	private long quantity;
 	
+	@CreationTimestamp
+	@Column(nullable=false, updatable=false)
 	private Timestamp date;
 	
 	@ManyToOne

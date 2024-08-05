@@ -31,6 +31,18 @@ public class ProductService {
 		return repo.findByWarehouseWarehouseId(warehouseId);
 	}
 	
+	List<Product> getAllLowLevelProductsByWarehouseId(Long warehouseId, Integer level) {
+		return repo.getAllLowLevelProductsByWarehouseId(warehouseId, level);
+	}
+	
+	List<Product> getAllHighLevelProductsByWarehouseId(Long warehouseId, Integer level) {
+		return repo.getAllHighLevelProductsByWarehouseId(warehouseId, level);
+	}
+	
+	List<Product> getAllLowAndHighLevelProductsByWarehouseId(Long warehouseId) {
+		return repo.getAllLowAndHighLevelProductsByWarehouseId(warehouseId);
+	}
+	
 	void addNewProduct(Product product) {
 		repo.save(product);		
 	}

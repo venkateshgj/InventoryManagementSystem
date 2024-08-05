@@ -20,7 +20,17 @@ public interface ProductRepository extends CrudRepository<Product, Long> {
 	@Transactional
 	@Query("delete from Product p where p.category.id = :categoryId")
 	void deleteAllProductsByCategoryId(Long categoryId);
+	
+	@Query("SELECT p FROM Product p WHERE p.warehouse.id = :warehouseId AND p.unitsInStocks <= :level")
+	List<Product> getAllLowLevelProductsByWarehouseId(Long warehouseId, Integer level);
 
 	List<Product> findByWarehouseWarehouseId(Long warehouseId);
+	
+	@Query("SELECT p FROM Product p WHERE p.warehouse.id = :warehouseId AND p.unitsInStocks >= :level")
+	List<Product> getAllHighLevelProductsByWarehouseId(Long warehouseId, Integer level);
+	
+	@Query("SELECT p FROM Product p WHERE p.warehouse.id = :warehouseId AND (p.unitsInStocks < 501 OR p.unitsInStocks > 2499)")
+	List<Product> getAllLowAndHighLevelProductsByWarehouseId(Long warehouseId);
+
 
 }

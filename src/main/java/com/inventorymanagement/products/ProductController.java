@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,6 +14,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import com.inventorymanagement.categories.Category;
 import com.inventorymanagement.warehouses.Warehouses;
@@ -45,6 +48,21 @@ public class ProductController {
 	List<Product> getAllProductsByWarehouseId(@PathVariable Long warehouseId) {
 		return service.getAllProductsByWarehouseId(warehouseId);
 	}
+	
+	@GetMapping("/all/warehouse/lowlevel/{warehouseId}/{level}")
+	List<Product> getAllLowLevelProductsByWarehouseId(@PathVariable Long warehouseId, @PathVariable Integer level) {
+		return service.getAllLowLevelProductsByWarehouseId(warehouseId, level);
+	}
+	
+	@GetMapping("/all/warehouse/highlevel/{warehouseId}/{level}")
+	List<Product> getAllHighLevelProductsByWarehouseId(@PathVariable Long warehouseId, @PathVariable Integer level) {
+		return service.getAllHighLevelProductsByWarehouseId(warehouseId, level);
+	}
+	
+	@GetMapping("/all/warehouse/getInventory/{warehouseId}")
+	List<Product> getAllLowAndHighLevelProductsByWarehouseId(@PathVariable Long warehouseId) {
+		return service.getAllLowAndHighLevelProductsByWarehouseId(warehouseId);
+	}
 
 	@PostMapping("/all/{categoryId}/{warehouseId}")
 	void addNewProduct(@RequestBody Product product, @PathVariable Long categoryId, @PathVariable Long warehouseId) {
@@ -52,8 +70,7 @@ public class ProductController {
 		product.setWarehouse(new Warehouses(warehouseId));
 		service.addNewProduct(product);
 	}
-	
-	
+
 	@PutMapping("/all/{productId}/{categoryId}")
 	void updateProduct(@RequestBody Product product, @PathVariable Long categoryId) {
 		product.setCategory(new Category(categoryId));
@@ -61,8 +78,10 @@ public class ProductController {
 	}
 	
 	@PutMapping("/all/update/product/{productId}")
-	void updateProduct(@RequestBody Product product) {
-//		product.setCategory(new Category(categoryId));
+	void updateProductDetails(@RequestBody Product product, @PathVariable Long productId) {
+//		Optional<Product> productOptional = service.getProductById(productId);
+//		Product product = productOptional.get();
+//		product.setUnitsInStocks(units);
 		service.updateProduct(product);
 	}
 	
