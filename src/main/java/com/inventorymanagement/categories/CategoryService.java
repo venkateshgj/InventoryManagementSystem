@@ -24,9 +24,6 @@ public class CategoryService {
 	void addNewCategory(Category category) {
 		repo.save(category);
 	}
-	void updateCategory(Category category) {
-		repo.save(category);
-	}
 
 	void deleteACategoryById(Long id) {
 		repo.deleteById(id);
