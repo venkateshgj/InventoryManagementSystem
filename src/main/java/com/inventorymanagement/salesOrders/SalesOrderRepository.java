@@ -17,5 +17,8 @@ public interface SalesOrderRepository extends CrudRepository<SalesOrder, Long> {
 	@Transactional
 	@Query("delete from SalesOrder s where s.product.id=:productId")
 	void deleteAllSalesOrderByProductId(Long productId);
+	
+	@Query("select s from SalesOrder s where s.product.id in ( select p.id from Product p where p.warehouse.id= :warehouseId)")
+	List<SalesOrder> getAllSalesOrdersByWarehouseId(Long warehouseId);
 
 }

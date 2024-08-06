@@ -39,6 +39,11 @@ public class SalesOrderController {
 		return service.getAllSalesOrdersByProductId(productId);
 	}
 
+	@GetMapping("/all/sales/{warehouseId}")
+	List<SalesOrder> getAllSalesOrdersByWarehouseId(@PathVariable Long warehouseId) {
+		return service.getAllSalesOrdersByWarehouseId(warehouseId);
+	}
+	
 	@PostMapping("/all/{productId}")
 	void addNewSalesOrder(@RequestBody SalesOrder salesOrder, @PathVariable Long productId) {
 		salesOrder.setProduct(new Product(productId));

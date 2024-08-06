@@ -6,6 +6,8 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.inventorymanagement.salesOrders.SalesOrder;
+
 @Service
 public class PurchaseService {
 
@@ -18,6 +20,10 @@ public class PurchaseService {
 	
 	List<Purchase> getByProductIdByPurchaseId(long productId){
 		return repo.findByProductProductId(productId);
+	}
+	
+	List<Purchase> getAllPurchaseByWarehouseId(Long warehouseId) {
+		return repo.getAllPurchaseByWarehouseId(warehouseId);
 	}
 	
 	void newPurchase(Purchase purchase) {
