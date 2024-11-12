@@ -6,7 +6,7 @@ spring:
   datasource:
     url: jdbc:mysql://localhost:3306/inv_mgt
     username: root
-    password: Warlock@19
+    password: XXXXXX
   jpa:
     hibernate:
       ddl-auto: update
